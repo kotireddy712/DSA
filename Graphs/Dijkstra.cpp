@@ -1,5 +1,12 @@
 #include <bits/stdc++.h>
 using namespace std;
+// Edge weights are non-negative (i.e., 
+// Negative weights break Dijkstra because the algorithm assumes that once you find the shortest path to a node, it will never improve later.
+
+// ❌ Fails when:
+
+// Graph has negative-weight edges (then we must use Bellman-Ford instead).
+
 void DijkstraAlgo(vector<pair<int,int>> Adj[],int n)
 {
     vector<int> distance(n,INT_MAX); //** final shortest-distance ((final-value ..)) */
@@ -28,8 +35,8 @@ void DijkstraAlgo(vector<pair<int,int>> Adj[],int n)
     {
         cout << distance[i] <<" ";
     }
-
 }
+
 int main()
 {
     int n;
