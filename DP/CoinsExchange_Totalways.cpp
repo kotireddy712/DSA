@@ -1,5 +1,7 @@
 //** It gives total no.of.ways to make sum of coins(infinetly taken coins..) to target */
-
+//** in BOTOOM-UP approach :: if (sum % c[0] == 0) ,, sum in 0 : target
+   // dp[0][sum] = 1;
+ //
 long No_Of_Ways(vector<vector<long>>& dp,vector<long>& coins,int indx,int target)
 {
     if( target == 0 )
