@@ -23,7 +23,7 @@ void DijkstraAlgo(vector<pair<int,int>> Adj[],int n)
         }
         for( auto [node,wt] : Adj[v] )
         {
-            if(distance[node] > distance[v] + wt)
+            if( distance[node] > distance[v] + wt )
             {
                 distance[node] = distance[v]+wt;
                 pq.push({distance[node],node});

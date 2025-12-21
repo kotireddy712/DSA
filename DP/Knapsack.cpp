@@ -1,5 +1,8 @@
+    
     QUESTION :: FULL(0/1)- Knapsack :: https://www.geeksforgeeks.org/problems/0-1-knapsack-problem0945/1
-class Solution 
+    SPACE OPTMISIATION :: we can even do with 1-d "1"-vector no need of curr; just 2nd loop run oppsoiste :: from W -->0.. and keep all prev-enough..
+
+    class Solution 
 {
   public:
     int FULL_TAKE(vector<vector<int>> &dp,int idx,int W,vector<int> &val, vector<int> &wt)
