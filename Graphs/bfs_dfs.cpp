@@ -1,12 +1,37 @@
+#include <iostream>
+#include<bits/stdc++.h>
+
+using namespace std;
+
 class Solution 
 {
   public:
-    vector<int> dfsOfGraph(int V, vector<vector<int>> edges) {
-      
-
-     
+   // T.C and S.C for D.F.S == " T.C == O(V+E) amd S.C = 0(V+E)
+    void dfs(int node,vector<vector<int>>& adj,vector<int>& visited,vector<int>& answer) {
+      answer.push_back(node);
+      visited[node]=1;
+      for(auto neighbour : adj[node])
+      {
+        if(!visited[neighbour])
+        {
+          dfs(neighbour,adj,visited,answer);
+        }
+      }
     }
-    
+    vector<int> dfsOfGraph(int V, vector<vector<int>> edges) {
+      vector<vector<int>> adj(V);
+      for(auto &e : edges) {
+        adj[e[0]].push_back(e[1]);
+        adj[e[1]].push_back(e[0]);
+      }
+      vector<int> visited(V,0);//** 0-not-visited */
+      vector<int> answer;
+      dfs(0,adj,visited,answer);
+      return answer;
+    }
+
+    // T.C and S.C for B.F.S == " T.C == O(V+E) amd S.C = 0(V+E) 
+
     vector<int> bfsOfGraph(int V, vector<vector<int>> edges) 
     {
       // edges == {{u,v},...} --> from this we have to create adjacency list ..
@@ -52,4 +77,32 @@ class Solution
       }
       return answer; 
     }
+
+    // # dfs doing using stack (ITERVATIVE)
+    vector<int> dfs_iterative(int V,vector<vector<int>> edges) {
+      vector<vector<int>> adj(V);
+      for(auto &e : edges) {
+        adj[e[0]].push_back(e[1]);
+        adj[e[1]].push_back(e[0]);
+      }
+      vector<int> visited(V,0);
+      stack<int> s;
+      s.push(0); //* start node push ..
+      while( !s.empty() ) {
+        int node = s.top();
+        s.pop();
+        if(visited[node])
+        {
+          continue;
+        }
+        visited[node] = 1;//** ## */
+        answer.push_back(node); //** 
+        for(int i = adj[node].size()-1; i >=0; i--) {
+          if( !visited[adj[node][i]] ) {
+            s.push(adj[node][i]);
+          }
+        }
+    }
+    return answer;
+  }
 };
